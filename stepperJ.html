@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stepper</title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  div{
+    text-align:center;
+    margin:0px auto;
+  }
+
+  body {
+    background-color: #f1f1f1;
+  }
+  
+  #regForm {
+    background-color: #ffffff;
+    margin: 250px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  
+  h1 {
+    text-align: center;  
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 5px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #4CAF50;
+  }
+  </style>
+<body>
+    <form id="regForm" action=""/action_page.php"" >
+        <h1>Questionary</h1>
+        <div class="tab" id="1" style="float: initial;" >Are you at least 18 years of age?
+            <div style="margin: 0 auto;">
+                <button type="button" id="Yes" onclick="nextPrev(1)">Yes</button>
+                <button type="button" id="NO" onclick="nextPrev(5)">No</button>
+              </div>
+          </div>
+          <div class="tab" id="2">Do you own a computer or smart phone with internet access?
+            <div style="margin: 0 auto;">
+                <button type="button" id="Yes" onclick="nextPrev(1)">Yes</button>
+                <button type="button" id="NO" onclick="nextPrev(4)">No</button>
+              </div>
+          </div>
+          <div class="tab" id="3">Do you Have Basic typing skills?
+            <div style="margin: 0 auto;">
+                <button type="button" id="Yes" onclick="nextPrev(1)">Yes</button>
+                <button type="button" id="NO" onclick="nextPrev(3)">No</button>
+              </div>
+          </div>
+          <div class="tab" id="4" >Are you capable of following detailed instructions?
+            <div style="margin: 0 auto;">
+                <button type="button" id="Yes" onclick="nextPrev(1)">Yes</button>
+                <button type="button" id="NO" onclick="nextPrev(2)">No</button>
+              </div>
+          </div>
+          <div class="tab" id="5" >Applying takes approximately 15 minutes. Are you ready to get started now?
+            <div style="margin: 0 auto;">
+                <button type="button" id="Yes" >Page</button>
+                <button type="button" id="NO" onclick="nextPrev(1)">No</button>
+              </div>
+          </div>
+          <div class="tab">Sorry
+            <div style="margin: 0 auto;">
+                <button type="button" id="exit" onclick="nextPrev(1)">Close</button>
+              </div>
+          </div>
+    </form>
+    <script>
+        var currentTab = 0;
+        var x = document.getElementsByClassName("tab");
+        x[currentTab].style.display = "block";
+        function nextPrev(n) {
+  
+          if (currentTab >= 5) {
+            document.getElementById("regForm").submit();
+            return false;
+          }else
+          {
+          x[currentTab].style.display = "none";
+          currentTab = currentTab + n;
+          x[currentTab].style.display = "block";
+          }
+        }
+        
+    </script>
+</body>
+</html>
