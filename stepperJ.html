@@ -91,7 +91,7 @@
   }
   </style>
 <body>
-    <form id="regForm" action=""/action_page.php"" >
+    <form id="regForm" action='https://www.google.co.ve'" target="_blank">
         <h1>Questionary</h1>
         <div class="tab" id="1" style="float: initial;" >Are you at least 18 years of age?
             <div style="margin: 0 auto;">
@@ -119,13 +119,13 @@
           </div>
           <div class="tab" id="5" >Applying takes approximately 15 minutes. Are you ready to get started now?
             <div style="margin: 0 auto;">
-                <button type="button" id="Yes" >Page</button>
-                <button type="button" id="NO" onclick="nextPrev(1)">No</button>
+                <button  type="submit" id="Yes">Page</button>
+                <button  type="button" id="NO" onclick="nextPrev(1)">No</button>
               </div>
           </div>
-          <div class="tab">Sorry
+          <div class="tab">Sorry, you must accept the terms
             <div style="margin: 0 auto;">
-                <button type="button" id="exit" onclick="nextPrev(1)">Close</button>
+                <button type="button" id="exit" onclick="nextPrev(1)">Restar</button>
               </div>
           </div>
     </form>
@@ -133,10 +133,12 @@
         var currentTab = 0;
         var x = document.getElementsByClassName("tab");
         x[currentTab].style.display = "block";
-        function nextPrev(n) {
-  
+
+        function nextPrev(n) {  
           if (currentTab >= 5) {
-            document.getElementById("regForm").submit();
+            x[currentTab].style.display = "none";
+            currentTab = 0;
+            x[currentTab].style.display = "block";
             return false;
           }else
           {
@@ -145,7 +147,6 @@
           x[currentTab].style.display = "block";
           }
         }
-        
     </script>
 </body>
 </html>
